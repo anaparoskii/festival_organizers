@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: #718355;
+    text-align: var(--bs-body-text-align);
+    background-color: #e9f5db;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+*, ::after, ::before {
+    box-sizing: border-box;
+  }
+  
+.mb-5 {
+    margin-bottom: 3rem!important;
+  }
+  
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    padding-left: 8em;
+    padding-right: 8em;
+    padding-bottom: 2em;
+  }
+
+.fit-cover {
+    object-fit: cover;
+  }
+  
+.w-100 {
+    width: 100%!important;
+  }
+  
+.d-block {
+    display: block!important;
+  }
+  
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+img, svg {
+    vertical-align: middle;
+  }
+
+img {
+    border-radius: 25px;
+    padding: 2px;
+}
+  
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+ol, ul {
+    padding-left: 2rem;
+  }
+  
+a:hover {
+    --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+  }
+  
+a {
+    color: #97a97c;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+
+.h2, h2 {
+    font-size: calc(1.325rem + .9vw);
+  }
+  
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--bs-heading-color);
+  }
+  
+.row > * {
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+  }
+  
+.col {
+    padding: 0.5em;
+}
+
+@media (min-width:768px) {
+    .row-cols-xl-3 > * {
+      flex: 0 0 auto;
+      width: 33.33333333%;
+    }
+}
+  
+.card {
+    background:  #cfe1b9;
+    border-radius: 25px;
+    border-color: #cfe1b9;
+}
+  
+.header {
+    background:  #87986a;
+    text-align: center;
+    border-bottom: 2em solid #718355;
+    color: #e9f5db;
+}
+
+footer {
+    background: #87986a;
+    border-top: 2em solid #718355;
+    text-align: center;
+    padding-top: 0em;
+    padding-bottom: 0em;
+}
+
+footer a {
+    color: #e9f5db;
+    font-size: 1.5em;
+}
+      
