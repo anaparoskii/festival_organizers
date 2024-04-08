@@ -350,3 +350,13 @@ footer a {
 .fixed {
     position: fixed;
 }
+
+.login {
+    position: fixed;
+    float: left;
+    top: 0px;
+    left: 0px;
+    max-width: 4em;
+    padding-top: .75em;
+    padding-left: .75em;
+}
