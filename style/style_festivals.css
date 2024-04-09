@@ -112,7 +112,7 @@
     font-size: var(--bs-body-font-size);
     font-weight: var(--bs-body-font-weight);
     line-height: var(--bs-body-line-height);
-    color: var(--bs-body-color);
+    color: #1f4b4a;
     text-align: var(--bs-body-text-align);
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
@@ -161,13 +161,6 @@
     margin-left: auto!important;
   }
   
-  @media (min-width:768px) {
-    .col-md-8 {
-      flex: 0 0 auto;
-      width: 66.66666667%;
-    }
-  }
-  
   .row > * {
     max-width: 100%;
     padding-right: calc(var(--bs-gutter-x) * .5);
@@ -196,6 +189,15 @@
     margin-left: calc(-.5 * var(--bs-gutter-x));
   }
   
+  
+  @media (min-width:768px) {
+    .row-cols-md-2 > * {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+  }
+
+
   @media (min-width:768px) {
     .row-cols-md-2 > * {
       flex: 0 0 auto;
@@ -209,8 +211,8 @@
   }
        
   .main {
-    padding-left: 8em;
-    padding-right: 8em;
+    padding-left: 5em;
+    padding-right: 5em;
   }
 
   .header {
@@ -239,17 +241,92 @@ footer a {
     color: #ffffff;
     font-size: 1.5em;
 }
-      
-.login {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    max-width: 4em;
-    padding-top: 0.75em;
-    padding-right: .75em;
-}
 
 a {
     color: #f4f4f4;
     font-weight: bold;
+}
+
+.login {
+  padding-top: 0.75em;
+}
+
+.login a {
+  color: #ffffff;
+  font-size: .8em;
+  font-weight: normal;
+}
+
+.login button {
+  border-radius: 25px;
+  font-size: 1em;
+  padding: 0.5em;
+  margin-bottom: .5em;
+  width: 8em;
+  text-align: center;
+}
+
+.login_button {
+  background: #638b89;
+  border-color: #638b89;
+  color: #ffffff;
+}
+
+.register_button {
+  background: #1f4b4a;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+@media (min-width:768px) {
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+  }
+  .row-cols-md-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+@media (min-width:768px) {
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .col-md-10 {
+    flex: 0 0 auto;
+    width: 83.33333333%;
+  }
+  .col-md-2 {
+    flex: 0 0 auto;
+    width: 16.66666667%;
+  }
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+  .row-cols-xl-3 > * {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+
+.section {
+  margin-top:16px!important;
+  margin-bottom:16px!important;
+}
+
+.content{
+  margin-left:auto;
+  margin-right:auto;
+  object-fit: cover;
+  width: 100%!important;
+  display: block!important;
+  max-width: 100%;
+  height: auto;
+}
+
+.mySlides {
+  display:none;
 }
