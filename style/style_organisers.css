@@ -290,8 +290,6 @@ footer a {
 }
 
 .login {
-    position: fixed;
-    float: left;
     top: 0px;
     left: 0px;
     max-width: 4em;
@@ -348,13 +346,13 @@ footer a {
 
 @media screen and (max-width: 992px) {
   .fixed {
-      position: sticky;
+      position: relative;
   }
   .left_half {
     border-bottom: 2em solid #638b89;
+    margin-bottom: 1.5em;
   }
   .login {
-    position: sticky;
     margin-bottom: -5em;
   }
   .login p {
@@ -386,8 +384,5 @@ footer a {
   }
   .left_half {
     border-right: 2em solid #638b89;
-  }
-  .login {
-    position: fixed;
   }
 }
