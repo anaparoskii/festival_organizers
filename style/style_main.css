@@ -162,7 +162,7 @@ img, svg {
   }
 
 img {
-    border-radius: 25px;
+    border-radius: 23px;
     padding: 2px;
 }
   
@@ -225,6 +225,7 @@ a {
     text-align: center;
     border-bottom: 2em solid #638b89;
     color: #ffffff;
+    box-shadow: 0 0 0 10px #d2d9da;
 }
 
 footer {

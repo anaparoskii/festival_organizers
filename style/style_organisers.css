@@ -350,10 +350,8 @@ footer a {
   }
   .left_half {
     border-bottom: 2em solid #638b89;
+    box-shadow: 0 0 0 10px #d2d9da;
     margin-bottom: 1.5em;
-  }
-  .login {
-    margin-bottom: -5em;
   }
   .login p {
     text-align: center;
@@ -384,5 +382,10 @@ footer a {
   }
   .left_half {
     border-right: 2em solid #638b89;
+    box-shadow: 0 0 0 10px #d2d9da;
   }
+}
+
+.info {
+  margin-top: -9em;
 }
