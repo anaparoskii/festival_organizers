@@ -72,14 +72,14 @@
             <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
-                        <button class="button function" type="button" onclick="displayForm()">Dodaj</button>
-                        <button class="button function" type="button" onclick="displayForm()">Izmeni</button>
+                        <button class="button function" type="button" onclick="displayAddForm()">Dodaj</button>
+                        <button class="button function" type="button" onclick="displayEditForm()">Izmeni</button>
                         <button class="button function" type="button">Obriši</button>
                     </div>
                 </div>
             </div>
 
-            <div id="myForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+            <div id="myAddForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12">
                         <section class="position-relative py-4 py-xl-5">
@@ -88,7 +88,7 @@
                                     <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                                         <div class="card mb-5">
                                             <div class="card-body p-sm-5">
-                                                <h2 class="text-center mb-4">Forma</h2>
+                                                <h2 class="text-center mb-4">Dodaj organizatora</h2>
                                                 <form method="post">
                                                     <div class="mb-3">
                                                         <input id="name" class="form-control" type="text" name="name" placeholder="Naziv">
@@ -105,8 +105,67 @@
                                                     <div class="mb-3">
                                                         <input id="email" class="form-control" type="email" name="email" placeholder="Email">
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <p>Slika:</p>
+                                                        <input id="image" class="form-control" type="file" name="image">
+                                                    </div>
                                                     <div>
-                                                        <button class="button normal" type="submit" onclick="displayForm()">Potvrdi</button>
+                                                        <textarea id="festivals" class="form-control" name="festivals" cols="50" placeholder="Festivali"></textarea>
+                                                    </div>
+                                                    <div>
+                                                        <button class="button normal" type="submit" onclick="displayForm()" style="margin-top: 1em;">Potvrdi</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myEditForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Izmena organizatora</h2>
+                                                <form method="post">
+                                                    <div class="mb-3">
+                                                        <lable for="name">Naziv:</lable>
+                                                        <select id="name" class="form-control" name="name">
+                                                            <option value="BeoArt Fest">BeoArt Fest</option>
+                                                            <option value="Etno Srbija">Etno Srbija</option>
+                                                            <option value="Lazarevac Fest">Lazarevac Fest</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="adress" class="form-control" type="text" name="adress" placeholder="Adresa">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="year" class="form-control" type="number" name="year" placeholder="Godina osnivanja">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="phone" class="form-control" type="tel" name="phone" placeholder="Broj telefona">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="email" class="form-control" type="email" name="email" placeholder="Email">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p>Slika:</p>
+                                                        <input id="image" class="form-control" type="file" name="image">
+                                                    </div>
+                                                    <div>
+                                                        <textarea id="festivals" class="form-control" name="festivals" cols="50" placeholder="Festivali"></textarea>
+                                                    </div>
+                                                    <div>
+                                                        <button class="button normal" type="submit" onclick="displayForm()" style="margin-top: 1em;">Potvrdi</button>
                                                     </div>
                                                 </form>
                                             </div>

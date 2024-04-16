@@ -436,11 +436,7 @@
     font-family: inherit;
   }
   
-#myForm {
-    display: none;
-} 
-
-#myTable {
+#myAddForm, #myEditForm, #myTable {
     display: none;
 }
 

@@ -22,11 +22,20 @@ function displayTable() {
     }
 }
 
-function displayForm() {
-    var x = document.getElementById("myForm");
+function displayAddForm() {
+    var x = document.getElementById("myAddForm");
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
     }
+}
+
+function displayEditForm() {
+  var x = document.getElementById("myEditForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 }
