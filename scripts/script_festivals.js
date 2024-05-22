@@ -6,8 +6,6 @@ var festivalID = [];
 var festivals = {};
 const url = window.location.href;
 let organizerId = getIdFromUrl(url);
-var allFestivals;
-var currentFestivals;
 
 function getOrganizers() {
   let request = new XMLHttpRequest();
@@ -18,7 +16,6 @@ function getOrganizers() {
         for (let id in organizers) {
           organizerID.push(id);
         }
-        showOrganizerInfo();
       } else {
         alert("Error occurred. Organizers could not be loaded.");
       }
@@ -39,7 +36,6 @@ function getFestivals() {
         for (let id in festivals) {
           festivalID.push(id);
         }
-        showFestivals();
       } else {
         alert("Error occurred. Organizers could not be loaded.");
       }
@@ -55,43 +51,17 @@ function showOrganizerInfo() {
   if (organizerId == null) {
     return;
   }
-  let organizer = organizers[organizerId];
   var organizerDiv = document.getElementById("my-data");
   organizerDiv.innerHTML = `
-    <h1 class="fw-bold">${organizer.naziv}</h1>
-    <ul>
-        <li><b>Adresa:</b> ${organizer.adresa}</li>
-        <li><b>Godina osnivanja:</b> ${organizer.godinaOsnivanja}</li>
-        <li><b>Telefon:</b> ${organizer.kontaktTelefon}</li>
-        <li><b>Email:</b> ${organizer.email}</li>
-    </ul>
-    <a href="index.html">Vidi sve organizatore</a>
-  `;
-}
-
-function showFestivals() {
-  allFestivals = organizers[organizerId].festivali;
-  currentFestivals = Object.keys(festivals[allFestivals]);
-  var festivalsDiv = document.getElementById("festivals-cards");
-  festivalsDiv.innerHTML = "";
-  for (let i = 0; i < currentFestivals.length; i++) {
-    let index = currentFestivals[i];
-    let festival = festivals[allFestivals][index];
-    let column = document.createElement("div");
-    column.className = "col";
-    column.innerHTML = `
-    <div class="card">
-        <div class="card-body pt-5 p-4">
-            <h2 class="card-title">${festival.naziv}</h2>
-            <h4 class="text-muted card-subtitle mb-2"><b>Tip:</b>${festival.tip}</h4>
-        </div>
-        <div class="card-footer p-4 py-3">
-            <a href="festival.html?id=${index}">Pogledaj još</a>
-        </div>
-    </div>
+      <h1 class="fw-bold">${organizer.naziv}</h1>
+      <ul>
+          <li><b>Adresa:</b> ${organizer.adresa}</li>
+          <li><b>Godina osnivanja:</b> ${organizer.godinaOsnivanja}</li>
+          <li><b>Telefon:</b> ${organizer.kontaktTelefon}</li>
+          <li><b>Email:</b> ${organizer.email}</li>
+      </ul>
+      <a href="index.html">Vidi sve organizatore</a>
     `;
-    festivalsDiv.appendChild(column);
-  }
 }
 
 function getIdFromUrl(url) {
@@ -101,4 +71,21 @@ function getIdFromUrl(url) {
     return params.get("id");
   }
   return null;
+}
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {
+    myIndex = 1;
+  }
+  x[myIndex - 1].style.display = "block";
+  setTimeout(carousel, 2000);
 }
