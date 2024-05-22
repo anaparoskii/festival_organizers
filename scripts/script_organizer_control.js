@@ -97,6 +97,17 @@ function dropDownMenuEdit() {
   }
 }
 
+function dropDownMenuEditOrganizer() {
+  var x = document.getElementById("namePick");
+  x.innerHTML = "";
+  for (let i = 0; i < organizerID.length; i++) {
+    let organizer = organizers[organizerID[i]];
+    x.innerHTML += `
+      <option value="${organizerID[i]}">${organizer.naziv}</option>
+    `;
+  }
+}
+
 function displayTable() {
   var x = document.getElementById("myTable");
   if (x.style.display === "none") {
@@ -120,7 +131,7 @@ function displayEditForm() {
   var x = document.getElementById("myEditForm");
   if (x.style.display === "none") {
     x.style.display = "block";
-    dropDownMenuEdit();
+    dropDownMenuEditOrganizer();
   } else {
     x.style.display = "none";
   }

@@ -21,7 +21,7 @@
                     <div class="container-fluid">
                         <div class="p-4 p-md-5">
                             <h1 class="fw-bold">Administratorska stranica - korisnici</h1>
-                            <button class="button normal"><a href="main_page.html">Main stranica</a></button>
+                            <button class="button normal"><a href="index.html">Main stranica</a></button>
                         </div>
                     </div>
                 </section>
@@ -45,40 +45,7 @@
                                 <th>Zanimanje</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>anaparoski</td>
-                                <td>anaparoski123</td>
-                                <td>Ana</td>
-                                <td>Paroški</td>
-                                <td>paroski.sv53.2023@uns.ac.rs</td>
-                                <td>11.09.2004.</td>
-                                <td>Žarka Zrenjanina 2, Novi Sad, 21000</td>
-                                <td>064/123-456</td>
-                                <td>Student</td>
-                            </tr>
-                            <tr>
-                                <td>isidorakorda</td>
-                                <td>isidorskorda123</td>
-                                <td>Isidors</td>
-                                <td>Korda</td>
-                                <td>korda@gmail.com</td>
-                                <td>05.01.2005.</td>
-                                <td>Miše Dimitrijevića 5, Novi Sad, 21000</td>
-                                <td>062/987-654</td>
-                                <td>Student</td>
-                            </tr>
-                            <tr>
-                                <td>nikolapetric</td>
-                                <td>nikolapetric123</td>
-                                <td>Nikola</td>
-                                <td>Petrić</td>
-                                <td>petric@gmail.com</td>
-                                <td>11.07.2003.</td>
-                                <td>Kosovska 14, Novi Sad, 21000</td>
-                                <td>066/111-222</td>
-                                <td>Student</td>
-                            </tr>
+                        <tbody id="table-content">
                         </tbody>
                     </table>
                 </div>
@@ -88,7 +55,6 @@
             <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
-                        <button class="button function" type="button" onclick="displayAddForm()">Dodaj</button>
                         <button class="button function" type="button" onclick="displayEditForm()">Izmeni</button>
                         <button class="button function" type="button">Obriši</button>
                     </div>
@@ -160,10 +126,7 @@
                                                 <form method="post">
                                                     <div class="mb-3">
                                                         <lable for="username">Korisničko ime:</lable>
-                                                        <select id="username" class="form-control" name="username">
-                                                            <option value="anaparoski">anaparoski</option>
-                                                            <option value="isidorakorda">isidorakorda</option>
-                                                            <option value="nikolapetric">nikolapetric</option>
+                                                        <select id="pickName" class="form-control" name="pickName">
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -204,7 +167,7 @@
                 </div>
             </div>
         </div>
-    <script src="script.js"></script>
+    <script src="scripts/script_user_control.js"></script>
 </body>
 
 </html>
