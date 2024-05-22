@@ -42,59 +42,9 @@
                                     <th>Godina osnivanja</th>
                                     <th>Telefon</th>
                                     <th>Email</th>
-                                    <th>Festivali</th>
                                 </tr>
                             </thead>
                             <tbody id="table-content">
-                                <tr>
-                                    <td>BeoArt Fest</td>
-                                    <td>Knez Mihailova 48, Beograd, 11000</td>
-                                    <td>2015</td>
-                                    <td>011/3042-568</td>
-                                    <td>kontakt@beoartfest.rs</td>
-                                    <td><button onclick="showFestivalInfo()">...</button></td>
-                                    <tr>
-                                        <td colspan="5" id="nested">
-                                            <table class="table">
-                                                <tr>
-                                                    <th>Naziv</th>
-                                                    <th>Tip</th>
-                                                    <th>Prevoz</th>
-                                                    <th>Cena</th>
-                                                    <th>Broj posetilaca</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ime</td>
-                                                    <td>Tip</td>
-                                                    <td>Kola</td>
-                                                    <td>1000</td>
-                                                    <td>1000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ime</td>
-                                                    <td>Tip</td>
-                                                    <td>Kola</td>
-                                                    <td>1000</td>
-                                                    <td>1000</td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tr>
-                                <tr>
-                                    <td>Etno Srbija</td>
-                                    <td>Vojvode Stepe 321, Beograd, 11000</td>
-                                    <td>2010</td>
-                                    <td>011/4223-690</td>
-                                    <td>info@etnosrbija.rs</td>
-                                </tr>
-                                <tr>
-                                    <td>Lazarevac Fest</td>
-                                    <td>Karađorđeva 12, Lazarevac, 11550</td>
-                                    <td>2018</td>
-                                    <td>014/7552-322</td>
-                                    <td>office@lazarevacmusicdays.rs</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -104,7 +54,9 @@
             <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
-                        <button class="button function" type="button" onclick="displayAddForm()">Dodaj</button>
+                        <button class="button function" type="button" onclick="displayAddForm()">Dodaj
+                            organizatora</button>
+                        <button class="button function" type="button" onclick="displayAddFestivalForm()">Dodaj festival</button>
                         <button class="button function" type="button" onclick="displayEditForm()">Izmeni</button>
                         <button class="button function" type="button">Obriši</button>
                     </div>
@@ -147,8 +99,59 @@
                                                         <input id="image" class="form-control" type="file" name="image">
                                                     </div>
                                                     <div>
-                                                        <textarea id="festivals" class="form-control" name="festivals"
-                                                            cols="50" placeholder="Festivali"></textarea>
+                                                        <button class="button normal" type="submit"
+                                                            onclick="displayForm()"
+                                                            style="margin-top: 1em;">Potvrdi</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div id="addFestival" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Dodaj Festival</h2>
+                                                <form method="post">
+                                                    <div class="mb-3">
+                                                        <lable for="name">Organizator:</lable>
+                                                        <select id="pickName" class="form-control" name="pickName">
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="name" class="form-control" type="text" name="name"
+                                                            placeholder="Naziv">
+                                                    <div class="mb-3">
+                                                        <input id="type" class="form-control" type="text"
+                                                            name="type" placeholder="Tip">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="drive" class="form-control" type="text" name="drive"
+                                                            placeholder="Oblik prevoza">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="price" class="form-control" type="number" name="price"
+                                                            placeholder="Cena">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="maxPeople" class="form-control" type="number" name="maxPeople"
+                                                            placeholder="Maksimalan broj posetilaca">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p>Slika:</p>
+                                                        <input id="image" class="form-control" type="file" name="image">
                                                     </div>
                                                     <div>
                                                         <button class="button normal" type="submit"
@@ -179,10 +182,7 @@
                                                 <form method="post">
                                                     <div class="mb-3">
                                                         <lable for="name">Naziv:</lable>
-                                                        <select id="name" class="form-control" name="name">
-                                                            <option value="BeoArt Fest">BeoArt Fest</option>
-                                                            <option value="Etno Srbija">Etno Srbija</option>
-                                                            <option value="Lazarevac Fest">Lazarevac Fest</option>
+                                                        <select id="pickName" class="form-control" name="pickName">
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -204,10 +204,6 @@
                                                     <div class="mb-3">
                                                         <p>Slika:</p>
                                                         <input id="image" class="form-control" type="file" name="image">
-                                                    </div>
-                                                    <div>
-                                                        <textarea id="festivals" class="form-control" name="festivals"
-                                                            cols="50" placeholder="Festivali"></textarea>
                                                     </div>
                                                     <div>
                                                         <button class="button normal" type="submit"

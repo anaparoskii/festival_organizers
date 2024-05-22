@@ -465,8 +465,8 @@ textarea {
 
 #myAddForm,
 #myEditForm,
-#myTable,
-#nested {
+#myTable, 
+#addFestival {
   display: none;
 }
 

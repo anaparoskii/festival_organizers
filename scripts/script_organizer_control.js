@@ -14,7 +14,6 @@ function getOrganizers() {
         for (let id in organizers) {
           organizerID.push(id);
         }
-        showOrganizerTable();
       } else {
         alert("Error occurred. Organizers could not be loaded.");
       }
@@ -51,33 +50,50 @@ function showOrganizerTable() {
   table.innerHTML = "";
   for (let i = 0; i < organizerID.length; i++) {
     let organizer = organizers[organizerID[i]];
+    let organizersFestivals = organizer.festivali;
+    let currentFestivals = Object.keys(festivals[organizersFestivals]);
     table.innerHTML += `
+      <tr>
+        <td><b>${organizer.naziv}</b></td>
+        <td>${organizer.adresa}</td>
+        <td>${organizer.godinaOsnivanja}</td>
+        <td>${organizer.kontaktTelefon}</td>
+        <td>${organizer.email}</td>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Naziv</th>
+        <th>Tip</th>
+        <th>Prevoz</th>
+        <th>Cena</th>
+        <th>Broj posetilaca</th>
+      </tr>
+    `;
+    for (let j = 0; j < currentFestivals.length; j++) {
+      let index = currentFestivals[j];
+      let festival = festivals[organizersFestivals][index];
+      table.innerHTML += `
         <tr>
-            <td>${organizer.naziv}</td>
-            <td>${organizer.adresa}</td>
-            <td>${organizer.godinaOsnivanja}</td>
-            <td>${organizer.kontaktTelefon}</td>
-            <td>${organizer.email}</td>
-            <td><button class="button function" onclick="showFestivalInfo()">...</button></td>
-            <tr>
-                <td colspan="5" id="nested">
-                </td>
-            </tr>
+          <td></td>
+          <td>${festival.naziv}</td>
+          <td>${festival.tip}</td>
+          <td>${festival.prevoz}</td>
+          <td>${festival.cena}</td>
+          <td>${festival.maxOsoba}</td>
         </tr>
       `;
+    }
   }
 }
 
-function showFestivalTable() {
-    
-}
-
-function showFestivalInfo() {
-  var x = document.getElementById("nested");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+function dropDownMenuEdit() {
+  var x = document.getElementById("pickName");
+  x.innerHTML = "";
+  for (let i = 0; i < organizerID.length; i++) {
+    let organizer = organizers[organizerID[i]];
+    x.innerHTML += `
+      <option value="${organizerID[i]}">${organizer.naziv}</option>
+    `;
   }
 }
 
@@ -85,6 +101,7 @@ function displayTable() {
   var x = document.getElementById("myTable");
   if (x.style.display === "none") {
     x.style.display = "block";
+    showOrganizerTable();
   } else {
     x.style.display = "none";
   }
@@ -103,24 +120,18 @@ function displayEditForm() {
   var x = document.getElementById("myEditForm");
   if (x.style.display === "none") {
     x.style.display = "block";
+    dropDownMenuEdit();
   } else {
     x.style.display = "none";
   }
 }
 
-// <table class="table">
-// <tr>
-// <th>Naziv</th>
-// <th>Tip</th>
-// <th>Prevoz</th>
-{/* <th>Cena</th>
-<th>Broj posetilaca</th>
-</tr>
-<tr>
-<td>Ime</td>
-<td>Tip</td>
-<td>Kola</td>
-<td>1000</td>
-<td>1000</td>
-</tr>
-</table>  */}
+function displayAddFestivalForm() {
+  var x = document.getElementById("addFestival");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    dropDownMenuEdit();
+  } else {
+    x.style.display = "none";
+  }
+}
