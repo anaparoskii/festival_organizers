@@ -465,7 +465,8 @@ textarea {
 
 #myAddForm,
 #myEditForm,
-#myTable {
+#myTable,
+#nested {
   display: none;
 }
 

@@ -86,7 +86,7 @@ function showFestivals() {
             <h4 class="text-muted card-subtitle mb-2"><b>Tip:</b>${festival.tip}</h4>
         </div>
         <div class="card-footer p-4 py-3">
-            <a href="festival.html?id=${index}">Pogledaj još</a>
+            <a href="festivals.html?id=${index}">Pogledaj još</a>
         </div>
     </div>
     `;

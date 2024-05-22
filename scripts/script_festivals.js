@@ -5,7 +5,7 @@ var organizers = {};
 var festivalID = [];
 var festivals = {};
 const url = window.location.href;
-let organizerId = getIdFromUrl(url);
+let festivalId = getIdFromUrl(url);
 
 function getOrganizers() {
   let request = new XMLHttpRequest();
@@ -36,6 +36,8 @@ function getFestivals() {
         for (let id in festivals) {
           festivalID.push(id);
         }
+        showFestivalInfo();
+        showGallery();
       } else {
         alert("Error occurred. Organizers could not be loaded.");
       }
@@ -47,21 +49,49 @@ function getFestivals() {
 
 getFestivals();
 
-function showOrganizerInfo() {
-  if (organizerId == null) {
+function showFestivalInfo() {
+  if (festivalId == null) {
     return;
   }
-  var organizerDiv = document.getElementById("my-data");
-  organizerDiv.innerHTML = `
-      <h1 class="fw-bold">${organizer.naziv}</h1>
-      <ul>
-          <li><b>Adresa:</b> ${organizer.adresa}</li>
-          <li><b>Godina osnivanja:</b> ${organizer.godinaOsnivanja}</li>
-          <li><b>Telefon:</b> ${organizer.kontaktTelefon}</li>
-          <li><b>Email:</b> ${organizer.email}</li>
-      </ul>
-      <a href="index.html">Vidi sve organizatore</a>
+  let festival = getFestival(festivalId);
+  var festivalDiv = document.getElementById("festival-info");
+  festivalDiv.innerHTML = `
+    <h1 id="start" class="fw-bold text-center">${festival.naziv}</h1>
+    <br/>
+    <p class="description w-lg-50">${festival.opis}</p>
+    <p><b>Tip:</b> ${festival.tip}<br>
+       <b>Prevoz:</b> ${festival.prevoz}<br>
+       <b>Cena:</b> ${festival.cena}<br>
+       <b>Maksimalan broj posetilaca:</b> ${festival.maxOsoba}<br></p>
     `;
+}
+
+function showGallery() {
+  if (festivalId == null) {
+    return;
+  }
+  let festival = getFestival(festivalId);
+  var galleryDiv = document.getElementById("my-gallery");
+  let gallery = festival.slike;
+  galleryDiv.innerHTML = "";
+  for (let i = 0; i < gallery.length; i++) {
+    galleryDiv.innerHTML += `
+      <div class="mySlides">
+        <img src="${gallery[i]}" style="width:100%">
+      </div>
+    `;
+  }
+}
+
+function getFestival(festivalId) {
+  for (let id of festivalID) {
+    if (festivals[id]) {
+      if (festivals[id][festivalId]) {
+        return festivals[id][festivalId];
+      }
+    }
+  }
+  return null;
 }
 
 function getIdFromUrl(url) {
