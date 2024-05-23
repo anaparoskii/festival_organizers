@@ -116,3 +116,39 @@ function displayEditForm() {
     x.style.display = "none";
   }
 }
+
+function showRegisterFormPart1() {
+  var registerForm = document.getElementById("registerFormPart1");
+  if (registerForm.style.display === "none") {
+    registerForm.style.display = "block";
+  } else {
+    registerForm.style.display = "none";
+  }
+}
+
+function showRegisterFormPart2() {
+  var registerForm = document.getElementById("registerFormPart2");
+  var closeRegisterForm = document.getElementById("registerFormPart1");
+  if (registerForm.style.display === "none") {
+    closeRegisterForm.style.display = "none";
+    registerForm.style.display = "block";
+  } else {
+    registerForm.style.display = "none";
+  }
+}
+
+function showRegisterFormPart3() {
+  var registerForm = document.getElementById("registerFormPart3");
+  var closeRegisterForm = document.getElementById("registerFormPart2");
+  if (registerForm.style.display === "none") {
+    closeRegisterForm.style.display = "none";
+    registerForm.style.display = "block";
+  } else {
+    registerForm.style.display = "none";
+  }
+}
+
+function closeRegisterForm() {
+  var registerForm = document.getElementById("registerForm");
+  registerForm.style.display = "none";
+}
