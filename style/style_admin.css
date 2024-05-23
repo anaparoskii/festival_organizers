@@ -468,8 +468,11 @@ textarea {
 #editUserForm,
 #editFestivalForm,
 #myEditForm,
-#myTable, 
-#addFestival {
+#myTable,
+#addFestival,
+#deleteUserForm,
+#deleteOrganizerForm,
+#deleteFestivalForm {
   display: none;
 }
 
@@ -490,6 +493,9 @@ textarea {
 #addOrganizerFormMessage,
 #addFestivalFormMessage,
 #editOrganizerFormMessage,
-#editFestivalFormMessage {
+#editFestivalFormMessage,
+#deleteUserFormMessage,
+#deleteOrganizerFormMessage,
+#deleteFestivalFormMessage {
   font-weight: bold;
-};
+}

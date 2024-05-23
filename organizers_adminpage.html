@@ -51,6 +51,8 @@
                 </div>
             </div>
 
+            <hr>
+
             <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
@@ -58,11 +60,8 @@
                             organizatora</button>
                         <button class="button function" type="button" onclick="displayEditForm()">Izmeni
                             organizatora</button>
-                        <button class="button function" type="button" onclick="displayAddFestivalForm()">Dodaj
-                            festival</button>
-                        <button class="button function" type="button" onclick="displayEditFestivalForm()">Izmeni
-                            festival</button>
-                        <button class="button function" type="button">Obriši</button>
+                        <button class="button function" type="button" onclick="deleteOrganizer()">Obriši
+                            organizatora</button>
                     </div>
                 </div>
             </div>
@@ -114,6 +113,105 @@
                                 </div>
                             </div>
                         </section>
+                    </div>
+                </div>
+            </div>
+
+            <div id="editOrganizerForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Izmena organizatora</h2>
+                                                <form method="post">
+                                                    <div class="mb-3" id="editOrganizerFormMessage"></div>
+                                                    <div class="mb-3">
+                                                        <lable for="organizerName">Naziv:</lable>
+                                                        <select id="organizerName" class="form-control"
+                                                            name="organizerNamePick">
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="updateOrganizerAdress" class="form-control"
+                                                            type="text" name="updateOrganizerAdress"
+                                                            placeholder="Adresa">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="updateOrganizerYear" class="form-control"
+                                                            type="number" name="updateOrganizerYear"
+                                                            placeholder="Godina osnivanja">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="updateOrganizerPhone" class="form-control" type="tel"
+                                                            name="updateOrganizerPhone" placeholder="Broj telefona">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="updateOrganizerEmail" class="form-control"
+                                                            type="email" name="updateOrganizerEmail"
+                                                            placeholder="Email">
+                                                    </div>
+                                                    <div>
+                                                        <button class="button normal" type="submit"
+                                                            style="margin-top: 1em;">Potvrdi</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deleteOrganizerForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Obriši organizatora</h2>
+                                                <form method="post">
+                                                    <div class="mb-3" id="deleteOrganizerFormMessage"></div>
+                                                    <div class="mb-3">
+                                                        <lable for="nameDelete">Naziv:</lable>
+                                                        <select id="nameDelete" class="form-control" name="name">
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <button id="deleteOrganizerButton" class="button normal"
+                                                            type="submit" onclick="removeOrganizer()">Obriši</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
+                        <button class="button function" type="button" onclick="displayAddFestivalForm()">Dodaj
+                            festival</button>
+                        <button class="button function" type="button" onclick="displayEditFestivalForm()">Izmeni
+                            festival</button>
+                        <button class="button function" type="button" onclick="deleteFestival()">Obriši
+                            festival</button>
                     </div>
                 </div>
             </div>
@@ -190,7 +288,8 @@
                                                     <div class="mb-3" id="editFestivalFormMessage"></div>
                                                     <div class="mb-3">
                                                         <lable for="name">Festival:</lable>
-                                                        <select id="editFestivalName" class="form-control" name="pickName">
+                                                        <select id="editFestivalName" class="form-control"
+                                                            name="pickName">
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -225,7 +324,7 @@
                 </div>
             </div>
 
-            <div id="editOrganizerForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+            <div id="deleteFestivalForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12">
                         <section class="position-relative py-4 py-xl-5">
@@ -234,37 +333,18 @@
                                     <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                                         <div class="card mb-5">
                                             <div class="card-body p-sm-5">
-                                                <h2 class="text-center mb-4">Izmena organizatora</h2>
+                                                <h2 class="text-center mb-4">Obriši festival</h2>
                                                 <form method="post">
-                                                    <div class="mb-3" id="editOrganizerFormMessage"></div>
+                                                    <div class="mb-3" id="deleteFestivalFormMessage"></div>
                                                     <div class="mb-3">
-                                                        <lable for="organizerName">Naziv:</lable>
-                                                        <select id="organizerName" class="form-control"
-                                                            name="organizerNamePick">
+                                                        <lable for="name">Festival:</lable>
+                                                        <select id="deleteFestivalName" class="form-control"
+                                                            name="name">
                                                         </select>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <input id="updateOrganizerAdress" class="form-control"
-                                                            type="text" name="updateOrganizerAdress"
-                                                            placeholder="Adresa">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="updateOrganizerYear" class="form-control"
-                                                            type="number" name="updateOrganizerYear"
-                                                            placeholder="Godina osnivanja">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="updateOrganizerPhone" class="form-control" type="tel"
-                                                            name="updateOrganizerPhone" placeholder="Broj telefona">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="updateOrganizerEmail" class="form-control"
-                                                            type="email" name="updateOrganizerEmail"
-                                                            placeholder="Email">
-                                                    </div>
                                                     <div>
-                                                        <button class="button normal" type="submit"
-                                                            style="margin-top: 1em;">Potvrdi</button>
+                                                        <button id="deleteOrganizerButton" class="button normal"
+                                                            type="submit" onclick="removeFestival()">Obriši</button>
                                                     </div>
                                                 </form>
                                             </div>

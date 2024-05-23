@@ -28,8 +28,10 @@
                                     <div class="login" style="max-width: 350px; text-align: center;">
                                         <p><a href="users_adminpage.html">Korisnici</a> | <a
                                                 href="organizers_adminpage.html">Organizatori</a></p>
-                                        <button class="login_button">Prijavi se</button>
-                                        <button class="register_button">Registruj se</button>
+                                        <button type="button" class="login_button" onclick="showLoginForm()">Prijavi
+                                            se</button>
+                                        <button type="button" class="register_button"
+                                            onclick="showRegisterForm()">Registruj se</button>
                                     </div>
                                 </div>
                             </div>
@@ -47,8 +49,7 @@
             </div>
             <div class="col-md-6 col-lg-7">
                 <section>
-                    <div style="height: 600px;"
-                    <div class="container-fluid h-100 position-relative" style="top: -50px">
+                    <div style="height: 600px;" <div class="container-fluid h-100 position-relative" style="top: -50px">
                         <div class="header row mb-5" style="padding-top: 2em; padding-bottom: 2em">
                             <div class="col-md-8 col-xl-6 text-center mx-auto">
                                 <h1 id="start" class="fw-bold">FESTIVALI</h1>
@@ -59,9 +60,130 @@
                     </div>
                 </section>
             </div>
+            <div id="registerForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Registracija</h2>
+                                                <form method="post">
+                                                    <div class="mb-3" id="registerFormMessage"></div>
+                                                    <div class="tab">
+                                                        <p>Opšte informacije:</p>
+                                                        <div class="mb-3">
+                                                            <input id="usernameRegister" class="form-control"
+                                                                type="text" name="username"
+                                                                placeholder="Korisničko ime">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input id="passwordRegister" class="form-control"
+                                                                type="text" name="password" placeholder="Šifra">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input id="firstNameRegister" class="form-control"
+                                                                type="text" name="firstName" placeholder="Ime">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input id="lastNameRegister" class="form-control"
+                                                                type="text" name="lastName" placeholder="Prezime">
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab">
+                                                        <p>Kontakt:</p>
+                                                        <div class="mb-3">
+                                                            <input id="emailRegister" class="form-control" type="email"
+                                                                name="email" placeholder="Email">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input id="phoneRegister" class="form-control" type="tel"
+                                                                name="phone" placeholder="Broj telefona">
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab">
+                                                        <p>Lični podaci:</p>
+                                                        <div class="mb-3">
+                                                            <input id="dateOfBirthRegister" class="form-control"
+                                                                type="date" name="dateOfBirth"
+                                                                placeholder="Datum rođenja">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input id="adressRegister" class="form-control" type="text"
+                                                                name="adress" placeholder="Adresa">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input id="jobRegister" class="form-control" type="text"
+                                                                name="job" placeholder="Zanimanje">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <button class="button function register_button"
+                                                            onclick="closeRegisterForm()">Zatvori</button>
+                                                        <button class="button function login_button" type="button"
+                                                            id="next" onclick="nextPrev(1)"></button>
+                                                        <button class="button function register_button" type="button"
+                                                            id="previous" onclick="nextPrev(-1)">Nazad</button>
+                                                    </div>
+                                                    <div style="text-align:center;margin-top:40px;">
+                                                        <span class="step"></span>
+                                                        <span class="step"></span>
+                                                        <span class="step"></span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loginForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Prijava</h2>
+                                                <form method="post">
+                                                    <div class="mb-3" id="loginFormMessage"></div>
+                                                    <div class="mb-3">
+                                                        <input id="usernameLogin" class="form-control" type="text"
+                                                            name="username" placeholder="Korisničko ime">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="passwordLogin" class="form-control" type="text"
+                                                            name="password" placeholder="Šifra">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <button class="button function register_button"
+                                                            onclick="closeLoginForm()">Zatvori</button>
+                                                        <button class="button function login_button"
+                                                            type="submit">Prijavi
+                                                            se</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="scripts/script_organizers.js"></script>
+    <script src="scripts/script_popup_forms.js"></script>
 </body>
 
 </html>

@@ -185,6 +185,96 @@ function getFestival(festivalId) {
   return null;
 }
 
+function deleteOrganizer() {
+  var x = document.getElementById("deleteOrganizerForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    dropDownMenuDeleteOrganizer();
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function validateRemoval() {
+  let confirmation = confirm(
+    "Da li ste sigurni da želite da obrišete organizatora? Ova radnja će obrisati i sve njegove festivale"
+  );
+  return confirmation;
+}
+
+function removeOrganizer() {
+  if (validateRemoval()) {
+    deleteOrganizerFormMessage("Organizator uspešno obrisan", "success");
+  } else {
+    deleteOrganizerFormMessage("Brisanje organizatora otkazano", "error");
+  }
+}
+
+function dropDownMenuDeleteOrganizer() {
+  var x = document.getElementById("nameDelete");
+  x.innerHTML = "";
+  for (let i = 0; i < organizerID.length; i++) {
+    let organizer = organizers[organizerID[i]];
+    x.innerHTML += `
+        <option value="${organizerID[i]}">${organizer.naziv}</option>
+      `;
+  }
+}
+
+function deleteOrganizerFormMessage(message, type) {
+  let messageElement = document.getElementById("deleteOrganizerFormMessage");
+  messageElement.textContent = message;
+  messageElement.className = type;
+}
+
+function deleteFestival() {
+  var x = document.getElementById("deleteFestivalForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    dropDownMenuDeleteFestival();
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function validateRemoval() {
+  let confirmation = confirm(
+    "Da li ste sigurni da želite da obrišete festival?"
+  );
+  return confirmation;
+}
+
+function removeFestival() {
+  if (validateRemoval()) {
+    deleteFestivalFormMessage("Festival uspešno obrisan", "success");
+  } else {
+    deleteFestivalFormMessage("Brisanje festivala otkazano", "error");
+  }
+}
+
+function dropDownMenuDeleteFestival() {
+  var x = document.getElementById("deleteFestivalName");
+  x.innerHTML = "";
+  for (let i = 0; i < organizerID.length; i++) {
+    let organizer = organizers[organizerID[i]];
+    let organizersFestivals = organizer.festivali;
+    let currentFestivals = Object.keys(festivals[organizersFestivals]);
+    for (let j = 0; j < currentFestivals.length; j++) {
+      let index = currentFestivals[j];
+      let festival = festivals[organizersFestivals][index];
+      x.innerHTML += `
+        <option value="${index}">${festival.naziv}</option>
+      `;
+    }
+  }
+}
+
+function deleteFestivalFormMessage(message, type) {
+  let messageElement = document.getElementById("deleteFestivalFormMessage");
+  messageElement.textContent = message;
+  messageElement.className = type;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const dropdown = this.getElementById("organizerName");
   const adress = this.getElementById("updateOrganizerAdress");

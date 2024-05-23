@@ -206,13 +206,6 @@ p {
   }
 }
 
-@media (min-width: 768px) {
-  .row-cols-md-2 > * {
-    flex: 0 0 auto;
-    width: 50%;
-  }
-}
-
 img {
   max-width: 100%;
   border-radius: 25px;
@@ -339,3 +332,64 @@ a {
 .mySlides {
   display: none;
 }
+
+#registerForm,
+#loginForm {
+  position: fixed;
+  background: rgb(0, 0, 0, 0.5);
+  border: 1px solid black;
+  padding: 10px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  color: #1f4b4a;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #d2d9da;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step.finish {
+  background-color: #1f4b4a;
+}
+
+.tab {
+  display: none;
+}
+
+button {
+  border-radius: 25px;
+  font-size: 1em;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  width: 8em;
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+#registerFormMessage,
+#loginFormMessage {
+  font-weight: bold;
+};

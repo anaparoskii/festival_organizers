@@ -83,7 +83,7 @@ document
       return;
     }
 
-    edit("Podaci uspešno uneseni!", "success");
+    editUserFormMessage("Podaci uspešno uneseni!", "success");
   });
 
 function editUserFormMessage(message, type) {

@@ -55,73 +55,12 @@
                 </div>
             </div>
 
+            <hr>
+
             <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
                         <button class="button function" type="button" onclick="displayEditForm()">Izmeni</button>
-                        <button class="button function" type="button">Obriši</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="myAddForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <section class="position-relative py-4 py-xl-5">
-                            <div class="container position-relative">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                                        <div class="card mb-5">
-                                            <div class="card-body p-sm-5">
-                                                <h2 class="text-center mb-4">Dodaj korisnika</h2>
-                                                <form method="post">
-                                                    <div class="mb-3">
-                                                        <input id="username" class="form-control" type="text"
-                                                            name="username" placeholder="Korisničko ime">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="password" class="form-control" type="text"
-                                                            name="password" placeholder="Lozinka">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="firstName" class="form-control" type="text"
-                                                            name="firstName" placeholder="Ime">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="lastName" class="form-control" type="text"
-                                                            name="lastName" placeholder="Prezime">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="email" class="form-control" type="email" name="email"
-                                                            placeholder="Email">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="dateOfBirth" class="form-control" type="date"
-                                                            name="dateOfBirth" placeholder="Datum rođenja">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="adress" class="form-control" type="text"
-                                                            name="adress" placeholder="Adresa">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="phone" class="form-control" type="tel" name="phone"
-                                                            placeholder="Broj telefona">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input id="job" class="form-control" type="text" name="job"
-                                                            placeholder="Zanimanje">
-                                                    </div>
-                                                    <div>
-                                                        <button class="button normal" type="submit"
-                                                            onclick="displayForm()">Potvrdi</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
                     </div>
                 </div>
             </div>
@@ -178,6 +117,49 @@
                                                     </div>
                                                     <div>
                                                         <button class="button normal" type="submit">Potvrdi</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
+                        <button class="button function" type="button" onclick="deleteUser()">Obriši</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deleteUserForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Obriši korisnika</h2>
+                                                <form method="post">
+                                                    <div class="mb-3" id="deleteUserFormMessage"></div>
+                                                    <div class="mb-3">
+                                                        <lable for="usernameDelete">Korisničko ime:</lable>
+                                                        <select id="usernameDelete" class="form-control"
+                                                            name="username">
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <button id="deleteUserButton" class="button normal"
+                                                            type="submit" onclick="removeUser()">Obriši</button>
                                                     </div>
                                                 </form>
                                             </div>

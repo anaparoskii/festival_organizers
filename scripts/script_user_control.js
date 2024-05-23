@@ -84,6 +84,48 @@ function displayEditForm() {
   }
 }
 
+function deleteUser() {
+  var x = document.getElementById("deleteUserForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    dropDownMenuDelete();
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function validateRemoval() {
+  let confirmation = confirm(
+    "Da li ste sigurni da želite da obrišete korisnika?"
+  );
+  return confirmation;
+}
+
+function removeUser() {
+  if (validateRemoval()) {
+    deleteUserFormMessage("Korisnik uspešno obrisan", "success");
+  } else {
+    deleteUserFormMessage("Brisanje korisnika otkazano", "error");
+  }
+}
+
+function dropDownMenuDelete() {
+  var x = document.getElementById("usernameDelete");
+  x.innerHTML = "";
+  for (let i = 0; i < userID.length; i++) {
+    let user = users[userID[i]];
+    x.innerHTML += `
+        <option value="${userID[i]}">${user.korisnickoIme}</option>
+      `;
+  }
+}
+
+function deleteUserFormMessage(message, type) {
+  let messageElement = document.getElementById("deleteUserFormMessage");
+  messageElement.textContent = message;
+  messageElement.className = type;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const dropdown = this.getElementById("usernameEdit");
   const password = this.getElementById("passwordEdit");

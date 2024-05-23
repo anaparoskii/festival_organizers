@@ -266,15 +266,6 @@ footer a {
   font-size: 0.8em;
 }
 
-.login button {
-  border-radius: 25px;
-  font-size: 1em;
-  padding: 0.5em;
-  margin-bottom: 0.5em;
-  width: 8em;
-  text-align: center;
-}
-
 .login_button {
   background: #638b89;
   border-color: #638b89;
@@ -285,6 +276,15 @@ footer a {
   background: #1f4b4a;
   border-color: #ffffff;
   color: #ffffff;
+}
+
+button {
+  border-radius: 25px;
+  font-size: 1em;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  width: 8em;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -310,11 +310,10 @@ footer a {
   }
 }
 
-#registerFormPart1,
-#registerFormPart2,
-#registerFormPart3 {
+#registerForm,
+#loginForm {
   position: fixed;
-  background: (0, 0, 0, 0.5);
+  background: rgb(0, 0, 0, 0.5);
   border: 1px solid black;
   padding: 10px;
   margin: auto;
@@ -324,15 +323,41 @@ footer a {
   left: 0;
   z-index: 10;
   display: none;
+  color: #1f4b4a;
 }
 
 .step {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbbbbb;
+  background-color: #d2d9da;
   border: none;
   border-radius: 50%;
   display: inline-block;
   opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step.finish {
+  background-color: #1f4b4a;
+}
+
+.tab {
+  display: none;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+#registerFormMessage,
+#loginFormMessage {
+  font-weight: bold;
 }
