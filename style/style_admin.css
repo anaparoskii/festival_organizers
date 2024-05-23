@@ -463,7 +463,10 @@ textarea {
   font-family: inherit;
 }
 
-#myAddForm,
+#addOrganizerForm,
+#editOrganizerForm,
+#editUserForm,
+#editFestivalForm,
 #myEditForm,
 #myTable, 
 #addFestival {
@@ -474,3 +477,19 @@ textarea {
   text-decoration: none;
   color: #ffffff;
 }
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+#editUserFormMessage,
+#addOrganizerFormMessage,
+#addFestivalFormMessage,
+#editOrganizerFormMessage,
+#editFestivalFormMessage {
+  font-weight: bold;
+};

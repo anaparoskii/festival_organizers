@@ -45,7 +45,7 @@ function showUserTable() {
 }
 
 function dropDownMenuEdit() {
-  var x = document.getElementById("pickName");
+  var x = document.getElementById("usernameEdit");
   x.innerHTML = "";
   for (let i = 0; i < userID.length; i++) {
     let user = users[userID[i]];
@@ -75,7 +75,7 @@ function displayAddForm() {
 }
 
 function displayEditForm() {
-  var x = document.getElementById("myEditForm");
+  var x = document.getElementById("editUserForm");
   if (x.style.display === "none") {
     x.style.display = "block";
     dropDownMenuEdit();
@@ -83,3 +83,28 @@ function displayEditForm() {
     x.style.display = "none";
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = this.getElementById("usernameEdit");
+  const password = this.getElementById("passwordEdit");
+  const firstName = this.getElementById("firstNameEdit");
+  const lastName = this.getElementById("lastNameEdit");
+  const email = this.getElementById("emailEdit");
+  const dateOfBirth = this.getElementById("dateOfBirthEdit");
+  const adress = this.getElementById("adressEdit");
+  const phoneNumber = this.getElementById("phoneEdit");
+  const job = this.getElementById("jobEdit");
+
+  dropdown.addEventListener("change", function () {
+    const id = dropdown.value;
+    const user = users[id];
+    password.value = user.lozinka;
+    firstName.value = user.ime;
+    lastName.value = user.prezime;
+    email.value = user.email;
+    dateOfBirth.value = user.datumRodjenja;
+    adress.value = user.adresa;
+    phoneNumber.value = user.telefon;
+    job.value = user.zanimanje;
+  });
+});

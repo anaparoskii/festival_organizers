@@ -56,14 +56,18 @@
                     <div class="col-md-12 offset-md-0" style="justify-content: space-between; display: flex;">
                         <button class="button function" type="button" onclick="displayAddForm()">Dodaj
                             organizatora</button>
-                        <button class="button function" type="button" onclick="displayAddFestivalForm()">Dodaj festival</button>
-                        <button class="button function" type="button" onclick="displayEditForm()">Izmeni</button>
+                        <button class="button function" type="button" onclick="displayEditForm()">Izmeni
+                            organizatora</button>
+                        <button class="button function" type="button" onclick="displayAddFestivalForm()">Dodaj
+                            festival</button>
+                        <button class="button function" type="button" onclick="displayEditFestivalForm()">Izmeni
+                            festival</button>
                         <button class="button function" type="button">Obriši</button>
                     </div>
                 </div>
             </div>
 
-            <div id="myAddForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+            <div id="addOrganizerForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12">
                         <section class="position-relative py-4 py-xl-5">
@@ -74,25 +78,26 @@
                                             <div class="card-body p-sm-5">
                                                 <h2 class="text-center mb-4">Dodaj organizatora</h2>
                                                 <form method="post">
+                                                    <div class="mb-3" id="addOrganizerFormMessage"></div>
                                                     <div class="mb-3">
-                                                        <input id="name" class="form-control" type="text" name="name"
-                                                            placeholder="Naziv">
+                                                        <input id="nameOrganizer" class="form-control" type="text"
+                                                            name="nameOrganizer" placeholder="Naziv">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="adress" class="form-control" type="text"
-                                                            name="adress" placeholder="Adresa">
+                                                        <input id="adressOrganizer" class="form-control" type="text"
+                                                            name="adressOrganizer" placeholder="Adresa">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="year" class="form-control" type="number" name="year"
-                                                            placeholder="Godina osnivanja">
+                                                        <input id="yearOrganizer" class="form-control" type="number"
+                                                            name="yearOrganizer" placeholder="Godina osnivanja">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="phone" class="form-control" type="tel" name="phone"
-                                                            placeholder="Broj telefona">
+                                                        <input id="phoneOrganizer" class="form-control" type="tel"
+                                                            name="phoneOrganizer" placeholder="Broj telefona">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="email" class="form-control" type="email" name="email"
-                                                            placeholder="Email">
+                                                        <input id="emailOrganizer" class="form-control" type="email"
+                                                            name="emailOrganizer" placeholder="Email">
                                                     </div>
                                                     <div class="mb-3">
                                                         <p>Slika:</p>
@@ -100,7 +105,6 @@
                                                     </div>
                                                     <div>
                                                         <button class="button normal" type="submit"
-                                                            onclick="displayForm()"
                                                             style="margin-top: 1em;">Potvrdi</button>
                                                     </div>
                                                 </form>
@@ -125,38 +129,40 @@
                                             <div class="card-body p-sm-5">
                                                 <h2 class="text-center mb-4">Dodaj Festival</h2>
                                                 <form method="post">
+                                                    <div class="mb-3" id="addFestivalFormMessage"></div>
                                                     <div class="mb-3">
                                                         <lable for="name">Organizator:</lable>
                                                         <select id="pickName" class="form-control" name="pickName">
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="name" class="form-control" type="text" name="name"
-                                                            placeholder="Naziv">
+                                                        <input id="addFestivalName" class="form-control" type="text"
+                                                            name="name" placeholder="Naziv">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="type" class="form-control" type="text"
+                                                        <input id="addFestivalType" class="form-control" type="text"
                                                             name="type" placeholder="Tip">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="drive" class="form-control" type="text" name="drive"
-                                                            placeholder="Oblik prevoza">
+                                                        <input id="addFestivalDrive" class="form-control" type="text"
+                                                            name="drive" placeholder="Oblik prevoza">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="price" class="form-control" type="number" name="price"
-                                                            placeholder="Cena">
+                                                        <input id="addFestivalPrice" class="form-control" type="number"
+                                                            name="price" placeholder="Cena">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="maxPeople" class="form-control" type="number" name="maxPeople"
+                                                        <input id="addFestivalCapacity" class="form-control"
+                                                            type="number" name="maxPeople"
                                                             placeholder="Maksimalan broj posetilaca">
                                                     </div>
                                                     <div class="mb-3">
                                                         <p>Slika:</p>
-                                                        <input id="image" class="form-control" type="file" name="image">
+                                                        <input id="addFestivalImage" class="form-control" type="file"
+                                                            name="image">
                                                     </div>
                                                     <div>
                                                         <button class="button normal" type="submit"
-                                                            onclick="displayForm()"
                                                             style="margin-top: 1em;">Potvrdi</button>
                                                     </div>
                                                 </form>
@@ -170,7 +176,56 @@
                 </div>
             </div>
 
-            <div id="myEditForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+            <div id="editFestivalForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="position-relative py-4 py-xl-5">
+                            <div class="container position-relative">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="card mb-5">
+                                            <div class="card-body p-sm-5">
+                                                <h2 class="text-center mb-4">Izmeni Festival</h2>
+                                                <form method="post">
+                                                    <div class="mb-3" id="editFestivalFormMessage"></div>
+                                                    <div class="mb-3">
+                                                        <lable for="name">Festival:</lable>
+                                                        <select id="editFestivalName" class="form-control" name="pickName">
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="editFestivalType" class="form-control" type="text"
+                                                            name="type" placeholder="Tip">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="editFestivalDrive" class="form-control" type="text"
+                                                            name="drive" placeholder="Oblik prevoza">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="editFestivalPrice" class="form-control" type="number"
+                                                            name="price" placeholder="Cena">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input id="editFestivalCapacity" class="form-control"
+                                                            type="number" name="maxPeople"
+                                                            placeholder="Maksimalan broj posetilaca">
+                                                    </div>
+                                                    <div>
+                                                        <button class="button normal" type="submit"
+                                                            style="margin-top: 1em;">Potvrdi</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div id="editOrganizerForm" class="container-fluid" style="padding-left: 2em; padding-right: 2em;">
                 <div class="row">
                     <div class="col-md-12">
                         <section class="position-relative py-4 py-xl-5">
@@ -181,34 +236,34 @@
                                             <div class="card-body p-sm-5">
                                                 <h2 class="text-center mb-4">Izmena organizatora</h2>
                                                 <form method="post">
+                                                    <div class="mb-3" id="editOrganizerFormMessage"></div>
                                                     <div class="mb-3">
-                                                        <lable for="name">Naziv:</lable>
-                                                        <select id="namePick" class="form-control" name="namePick">
+                                                        <lable for="organizerName">Naziv:</lable>
+                                                        <select id="organizerName" class="form-control"
+                                                            name="organizerNamePick">
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="adress" class="form-control" type="text"
-                                                            name="adress" placeholder="Adresa">
+                                                        <input id="updateOrganizerAdress" class="form-control"
+                                                            type="text" name="updateOrganizerAdress"
+                                                            placeholder="Adresa">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="year" class="form-control" type="number" name="year"
+                                                        <input id="updateOrganizerYear" class="form-control"
+                                                            type="number" name="updateOrganizerYear"
                                                             placeholder="Godina osnivanja">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="phone" class="form-control" type="tel" name="phone"
-                                                            placeholder="Broj telefona">
+                                                        <input id="updateOrganizerPhone" class="form-control" type="tel"
+                                                            name="updateOrganizerPhone" placeholder="Broj telefona">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <input id="email" class="form-control" type="email" name="email"
+                                                        <input id="updateOrganizerEmail" class="form-control"
+                                                            type="email" name="updateOrganizerEmail"
                                                             placeholder="Email">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <p>Slika:</p>
-                                                        <input id="image" class="form-control" type="file" name="image">
                                                     </div>
                                                     <div>
                                                         <button class="button normal" type="submit"
-                                                            onclick="displayForm()"
                                                             style="margin-top: 1em;">Potvrdi</button>
                                                     </div>
                                                 </form>
@@ -223,6 +278,8 @@
             </div>
         </div>
         <script src="scripts/script_organizer_control.js"></script>
+        <script src="scripts/script_organizer_forms.js"></script>
+        <script src="scripts/script_festival_forms.js"></script>
 </body>
 
 </html>
