@@ -113,8 +113,11 @@ function searchNameFunction() {
   for (i = 0; i < li.length; i++) {
     h2 = li[i].getElementsByTagName("h2")[0];
     txtValue = h2.textContent || h2.innerText;
+    var highlightedText = txtValue.replace(new RegExp(filter, 'gi'), function(match) {
+      return '<span class="highlight">' + match + '</span>';
+    });
+    h2.innerHTML = highlightedText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      h2.style.backgroundColor = "#a1dff7";
       li[i].style.display = "";
     } else {
       li[i].style.display = "none";
@@ -132,6 +135,10 @@ function searchTypeFunction() {
   for (i = 0; i < li.length; i++) {
     h4 = li[i].getElementsByTagName("h4")[0];
     txtValue = h4.textContent || h4.innerText;
+    var highlightedText = txtValue.replace(new RegExp(filter, 'gi'), function(match) {
+      return '<span class="highlight">' + match + '</span>';
+    });
+    h4.innerHTML = highlightedText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {

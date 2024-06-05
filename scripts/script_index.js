@@ -83,6 +83,10 @@ function searchFunction() {
   for (i = 0; i < li.length; i++) {
     h2 = li[i].getElementsByTagName("h2")[0];
     txtValue = h2.textContent || h2.innerText;
+    var highlightedText = txtValue.replace(new RegExp(filter, 'gi'), function(match) {
+      return '<span class="highlight">' + match + '</span>';
+    });
+    h2.innerHTML = highlightedText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
