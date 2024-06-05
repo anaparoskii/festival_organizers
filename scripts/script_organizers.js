@@ -102,3 +102,40 @@ function getIdFromUrl(url) {
   }
   return null;
 }
+
+function searchNameFunction() {
+  var input, filter, ul, li, h2, i, txtValue;
+  input = document.getElementById("searchName");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("festivals-cards");
+  li = ul.getElementsByClassName("card");
+
+  for (i = 0; i < li.length; i++) {
+    h2 = li[i].getElementsByTagName("h2")[0];
+    txtValue = h2.textContent || h2.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      h2.style.backgroundColor = "#a1dff7";
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function searchTypeFunction() {
+  var input, filter, ul, li, h4, i, txtValue;
+  input = document.getElementById("searchType");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("festivals-cards");
+  li = ul.getElementsByClassName("card");
+
+  for (i = 0; i < li.length; i++) {
+    h4 = li[i].getElementsByTagName("h4")[0];
+    txtValue = h4.textContent || h4.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}

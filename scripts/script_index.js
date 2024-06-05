@@ -73,46 +73,20 @@ function showOrganizers() {
   }
 }
 
-var myIndex = 0;
-carousel();
+function searchFunction() {
+  var input, filter, ul, li, h2, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("organizers");
+  li = ul.getElementsByClassName("card");
 
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000);
-}
-
-function displayTable() {
-  var x = document.getElementById("myTable");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
-function displayAddForm() {
-  var x = document.getElementById("myAddForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
-function displayEditForm() {
-  var x = document.getElementById("myEditForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  for (i = 0; i < li.length; i++) {
+    h2 = li[i].getElementsByTagName("h2")[0];
+    txtValue = h2.textContent || h2.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
   }
 }

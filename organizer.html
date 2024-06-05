@@ -11,6 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Organizatori Festivala</title>
 </head>
 
@@ -54,6 +56,14 @@
                             <div class="col-md-8 col-xl-6 text-center mx-auto">
                                 <h1 id="start" class="fw-bold">FESTIVALI</h1>
                             </div>
+                        </div>
+                        <div class="searchbar" style="margin-bottom: 1em;">
+                            <span class="searchicon material-symbols-outlined">search</span>
+                            <input type="text" id="searchName" onkeyup="searchNameFunction()"
+                                placeholder="Pretraži po nazivu...">
+                            <span id="icon2" class="searchicon material-symbols-outlined">search</span>
+                            <input type="text" id="searchType" onkeyup="searchTypeFunction()"
+                                placeholder="Pretraži po tipu...">
                         </div>
                         <div id="festivals-cards" class="row gy-5 gy-lg-0 row-cols-1 row-cols-md-2 row-cols-lg-3">
                         </div>

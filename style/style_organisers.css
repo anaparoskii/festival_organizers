@@ -193,9 +193,7 @@ h6 {
   --bs-card-border-width: var(--bs-border-width);
   --bs-card-border-color: var(--bs-border-color-translucent);
   --bs-card-border-radius: var(--bs-border-radius);
-  --bs-card-inner-border-radius: calc(
-    var(--bs-border-radius) - (var(--bs-border-width))
-  );
+  --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
   --bs-card-cap-padding-y: 0.5rem;
   --bs-card-cap-padding-x: 1rem;
   --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
@@ -355,12 +353,15 @@ footer a {
   .text-md-start {
     text-align: left !important;
   }
+
   .align-items-md-center {
     align-items: center !important;
   }
+
   .justify-content-md-start {
     justify-content: flex-start !important;
   }
+
   .d-md-flex {
     display: flex !important;
   }
@@ -370,14 +371,17 @@ footer a {
   .fixed {
     position: relative;
   }
+
   .left_half {
     border-bottom: 2em solid #638b89;
     box-shadow: 0 0 0 10px #d2d9da;
     margin-bottom: 1.5em;
   }
+
   .login p {
     text-align: center;
   }
+
 }
 
 @media (min-width: 992px) {
@@ -385,27 +389,33 @@ footer a {
     flex: 0 0 auto;
     width: 41.66666667%;
   }
+
   .container,
   .container-lg,
   .container-md,
   .container-sm {
     max-width: 960px;
   }
+
   .col-lg-7 {
     flex: 0 0 auto;
     width: 58.33333333%;
   }
+
   .g-lg-0,
   .gy-lg-0 {
     --bs-gutter-y: 0;
   }
-  .row-cols-lg-3 > * {
+
+  .row-cols-lg-3>* {
     flex: 0 0 auto;
     width: 33.33333333%;
   }
+
   .fixed {
     position: fixed;
   }
+
   .left_half {
     border-right: 2em solid #638b89;
     box-shadow: 0 0 0 10px #d2d9da;
@@ -475,4 +485,41 @@ button {
 #registerFormMessage,
 #loginFormMessage {
   font-weight: bold;
+}
+
+#searchName,
+#searchType {
+  width: 100%;
+  /* Full-width */
+  font-size: 16px;
+  /* Increase font-size */
+  padding: 12px 20px 12px 60px;
+  /* Add some padding */
+  border: 1px solid #ddd;
+  /* Add a grey border */
+  margin-bottom: 12px;
+  /* Add some space below the input */
+  border-radius: 25px;
+  margin-left: -50px;
+}
+
+.searchbar {
+  max-width: content;
+  display: flex;
+  align-items: center;
+}
+
+.searchicon {
+  padding: 12px;
+  margin-bottom: 0.5em;
+  background: #1f4b4a;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 25px 0 0 25px;
+  position: relative;
+}
+
+#icon2 {
+  margin-left: 1em;
 }

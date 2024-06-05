@@ -310,6 +310,16 @@ button {
   }
 }
 
+@media (max-width: 768px) {
+  #registerForm,
+  #loginForm {
+    width: 750px;
+    flex: 0 0 auto;
+    position: relative;
+    left: -130px !important;
+  }
+}
+
 #registerForm,
 #loginForm {
   position: fixed;
@@ -360,4 +370,31 @@ button {
 #registerFormMessage,
 #loginFormMessage {
   font-weight: bold;
+}
+
+#search {
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 60px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  border-radius: 25px;
+  margin-left: -50px;
+}
+
+.searchbar {
+  max-width: content;
+  display: flex;
+  align-items: center;
+}
+
+.searchicon {
+  padding: 12px;
+  margin-bottom: 0.5em;
+  background: #1f4b4a;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 25px 0 0 25px;
+  position: relative;
 }
