@@ -103,9 +103,15 @@ function validateRemoval() {
 
 function removeUser() {
   if (validateRemoval()) {
-    deleteUserFormMessage("Korisnik uspešno obrisan", "success");
-  } else {
-    deleteUserFormMessage("Brisanje korisnika otkazano", "error");
+    var selectElement = document.getElementById("usernameDelete");
+    var deleteUserID = selectElement.value;
+    var request = new XMLHttpRequest();
+    request.open(
+      "DELETE",
+      firebaseUrl + "/korisnici/" + deleteUserID + ".json",
+      true
+    );
+    request.send();
   }
 }
 
