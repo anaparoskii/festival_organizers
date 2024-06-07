@@ -463,10 +463,8 @@ textarea {
   font-family: inherit;
 }
 
-#addOrganizerForm,
 #editOrganizerForm,
 #editUserForm,
-#editFestivalForm,
 #myEditForm,
 #myTable,
 #addFestival,
@@ -490,10 +488,8 @@ textarea {
 }
 
 #editUserFormMessage,
-#addOrganizerFormMessage,
 #addFestivalFormMessage,
 #editOrganizerFormMessage,
-#editFestivalFormMessage,
 #deleteUserFormMessage,
 #deleteOrganizerFormMessage,
 #deleteFestivalFormMessage {

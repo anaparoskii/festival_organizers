@@ -36,7 +36,6 @@ function showTab(n) {
   }
   if (n == x.length - 2) {
     let register = document.getElementById("next");
-    register.getAttribute("type", "submit");
     register.innerHTML = "Registruj se";
   } else {
     document.getElementById("next").innerHTML = "Dalje";
@@ -60,10 +59,26 @@ function nextPrev(n) {
   x[currentTab].style.display = "none";
   currentTab = currentTab + n;
   if (currentTab == 3) {
-    document.getElementById("registerForm").submit();
     document.getElementById("next").style.display = "none";
     document.getElementById("previous").style.display = "none";
+    var request = new XMLHttpRequest();
+    request.open("POST", firebaseUrl + "/korisnici.json", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(
+      JSON.stringify({
+        korisnickoIme: document.getElementById("usernameRegister").value,
+        lozinka: document.getElementById("passwordRegister").value,
+        ime: document.getElementById("firstNameRegister").value,
+        prezime: document.getElementById("lastNameRegister").value,
+        email: document.getElementById("emailRegister").value,
+        telefon: document.getElementById("phoneRegister").value,
+        datumRodjenja: document.getElementById("dateOfBirthRegister").value,
+        adresa: document.getElementById("adressRegister").value,
+        profesija: document.getElementById("jobRegister").value,
+      })
+    );
     registerFormMessage("Uspešno ste se registrovali!", "success");
+    document.getElementById("registerForm").submit();
   }
   registerFormMessage("", "success");
   showTab(currentTab);

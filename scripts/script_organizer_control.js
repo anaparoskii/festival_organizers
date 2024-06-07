@@ -86,17 +86,6 @@ function showOrganizerTable() {
   }
 }
 
-function dropDownMenuEdit() {
-  var x = document.getElementById("pickName");
-  x.innerHTML = "";
-  for (let i = 0; i < organizerID.length; i++) {
-    let organizer = organizers[organizerID[i]];
-    x.innerHTML += `
-      <option value="${organizerID[i]}">${organizer.naziv}</option>
-    `;
-  }
-}
-
 function dropDownMenuEditOrganizer() {
   var x = document.getElementById("organizerName");
   x.innerHTML = "";
@@ -108,37 +97,11 @@ function dropDownMenuEditOrganizer() {
   }
 }
 
-function dropDownMenuEditFestival() {
-  var x = document.getElementById("editFestivalName");
-  x.innerHTML = "";
-  for (let i = 0; i < organizerID.length; i++) {
-    let organizer = organizers[organizerID[i]];
-    let organizersFestivals = organizer.festivali;
-    let currentFestivals = Object.keys(festivals[organizersFestivals]);
-    for (let j = 0; j < currentFestivals.length; j++) {
-      let index = currentFestivals[j];
-      let festival = festivals[organizersFestivals][index];
-      x.innerHTML += `
-        <option value="${index}">${festival.naziv}</option>
-      `;
-    }
-  }
-}
-
 function displayTable() {
   var x = document.getElementById("myTable");
   if (x.style.display === "none") {
     x.style.display = "block";
     showOrganizerTable();
-  } else {
-    x.style.display = "none";
-  }
-}
-
-function displayAddForm() {
-  var x = document.getElementById("addOrganizerForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
   } else {
     x.style.display = "none";
   }
@@ -154,6 +117,36 @@ function displayEditForm() {
   }
 }
 
+var editOrganizerButton = document.getElementById("editOrganizerButton");
+editOrganizerButton.addEventListener("click", function (e) {
+  var selectElement = document.getElementById("organizerName");
+  var organizerID = selectElement.value;
+  var organizer = organizers[organizerID];
+  var adress = document.getElementById("updateOrganizerAdress").value;
+  var year = document.getElementById("updateOrganizerYear").value;
+  var phone = document.getElementById("updateOrganizerPhone").value;
+  var email = document.getElementById("updateOrganizerEmail").value;
+  let updatedOrganizer = {
+    naziv: organizer.naziv,
+    adresa: adress,
+    godinaOsnivanja: year,
+    logo: organizer.logo,
+    kontaktTelefon: phone,
+    email: email,
+    festivali: organizer.festivali,
+  };
+  var request = new XMLHttpRequest();
+  if (validateEditOrganizerForm()) {
+    request.open(
+      "PATCH",
+      firebaseUrl + "/organizatoriFestivala/" + organizerID + ".json",
+      true
+    );
+    request.send(JSON.stringify(updatedOrganizer));
+    editOrganizerFormMessage("Organizator uspešno izmenjen", "success");
+  }
+});
+
 function displayAddFestivalForm() {
   var x = document.getElementById("addFestival");
   if (x.style.display === "none") {
@@ -164,14 +157,42 @@ function displayAddFestivalForm() {
   }
 }
 
-function displayEditFestivalForm() {
-  var x = document.getElementById("editFestivalForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    dropDownMenuEditFestival();
-  } else {
-    x.style.display = "none";
+var addFestivalButton = document.getElementById("addFestivalButton");
+addFestivalButton.addEventListener("click", function (e) {
+  if (validateAddFestivalForm()) {
+    var selectElement = document.getElementById("pickName");
+    var organizerID = selectElement.value;
+    var organizer = organizers[organizerID];
+    var name = document.getElementById("addFestivalName").value;
+    var type = document.getElementById("addFestivalType").value;
+    var transport = document.getElementById("addFestivalDrive").value;
+    var price = document.getElementById("addFestivalPrice").value;
+    var visitors = document.getElementById("addFestivalCapacity").value;
+    var description = document.getElementById("addFestivalDescription").value;
+    var request = new XMLHttpRequest();
+    request.open(
+      "POST",
+      firebaseUrl + "/festivali/" + organizer.festivali + ".json",
+      true
+    );
+    request.send(
+      JSON.stringify({
+        naziv: name,
+        tip: type,
+        prevoz: transport,
+        cena: price,
+        maxOsoba: visitors,
+        opis: description,
+      })
+    );
+    addFestivalFormMessage("Festival uspešno dodat", "success");
   }
+});
+
+function addFestivalFormMessage(message, type) {
+  let messageElement = document.getElementById("addFestivalFormMessage");
+  messageElement.textContent = message;
+  messageElement.className = type;
 }
 
 function getFestival(festivalId) {
@@ -195,20 +216,30 @@ function deleteOrganizer() {
   }
 }
 
-function validateRemoval() {
+function validateOrganizerRemoval() {
   let confirmation = confirm(
     "Da li ste sigurni da želite da obrišete organizatora? Ova radnja će obrisati i sve njegove festivale"
   );
   return confirmation;
 }
 
-function removeOrganizer() {
-  if (validateRemoval()) {
+var deleteOrganizerButton = document.getElementById("deleteOrganizerButton");
+deleteOrganizerButton.addEventListener("click", function (e) {
+  if (validateOrganizerRemoval()) {
+    var selectElement = document.getElementById("nameDelete");
+    var deleteOrganizerID = selectElement.value;
+    var request = new XMLHttpRequest();
+    request.open(
+      "DELETE",
+      firebaseUrl + "/organizatori/" + deleteOrganizerID + ".json",
+      true
+    );
+    request.send();
     deleteOrganizerFormMessage("Organizator uspešno obrisan", "success");
   } else {
     deleteOrganizerFormMessage("Brisanje organizatora otkazano", "error");
   }
-}
+});
 
 function dropDownMenuDeleteOrganizer() {
   var x = document.getElementById("nameDelete");
@@ -231,41 +262,78 @@ function deleteFestival() {
   var x = document.getElementById("deleteFestivalForm");
   if (x.style.display === "none") {
     x.style.display = "block";
+    dropDownMenuPickOrganizer();
     dropDownMenuDeleteFestival();
   } else {
     x.style.display = "none";
   }
 }
 
-function validateRemoval() {
+function validateFestivalRemoval() {
   let confirmation = confirm(
     "Da li ste sigurni da želite da obrišete festival?"
   );
   return confirmation;
 }
 
-function removeFestival() {
-  if (validateRemoval()) {
+var deleteFestivalButton = document.getElementById("deleteFestivalButton");
+deleteFestivalButton.addEventListener("click", function (e) {
+  if (validateFestivalRemoval()) {
+    var selectOrganizer = document.getElementById("oName");
+    var organizerID = selectOrganizer.value;
+    var organizerFestivals = organizers[organizerID].festivali;
+    var selectElement = document.getElementById("deleteFestivalName");
+    var deleteFestivalID = selectElement.value;
+    var request = new XMLHttpRequest();
+    request.open(
+      "DELETE",
+      firebaseUrl +
+        "/festivali/" +
+        organizerFestivals +
+        "/" +
+        deleteFestivalID +
+        ".json",
+      true
+    );
+    request.send();
     deleteFestivalFormMessage("Festival uspešno obrisan", "success");
   } else {
     deleteFestivalFormMessage("Brisanje festivala otkazano", "error");
   }
+});
+
+function dropDownMenuDeleteFestival(organizerId) {
+  var x = document.getElementById("deleteFestivalName");
+  x.innerHTML = "";
+  var organizerFestivals = organizers[organizerId].festivali;
+  var festivalKeys = Object.keys(festivals[organizerFestivals]);
+  for (let i = 0; i < festivalKeys.length; i++) {
+    let festival = festivals[organizerFestivals][festivalKeys[i]];
+    x.innerHTML += `
+      <option value="${festivalKeys[i]}">${festival.naziv}</option>
+    `;
+  }
 }
 
-function dropDownMenuDeleteFestival() {
-  var x = document.getElementById("deleteFestivalName");
+function dropDownMenuEdit() {
+  var x = document.getElementById("pickName");
   x.innerHTML = "";
   for (let i = 0; i < organizerID.length; i++) {
     let organizer = organizers[organizerID[i]];
-    let organizersFestivals = organizer.festivali;
-    let currentFestivals = Object.keys(festivals[organizersFestivals]);
-    for (let j = 0; j < currentFestivals.length; j++) {
-      let index = currentFestivals[j];
-      let festival = festivals[organizersFestivals][index];
-      x.innerHTML += `
-        <option value="${index}">${festival.naziv}</option>
-      `;
-    }
+    x.innerHTML += `
+      <option value="${organizerID[i]}">${organizer.naziv}</option>
+    `;
+  }
+}
+
+function dropDownMenuPickOrganizer() {
+  var x = document.getElementById("oName");
+  x.innerHTML = "";
+  for (let i = 0; i < organizerID.length; i++) {
+    let organizer = organizers[organizerID[i]];
+    x.innerHTML += `
+      <option value="${organizerID[i]}">${organizer.naziv}</option>
+    `;
   }
 }
 
@@ -293,18 +361,106 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const dropdown = this.getElementById("editFestivalName");
-  const type = this.getElementById("editFestivalType");
-  const drive = this.getElementById("editFestivalDrive");
-  const price = this.getElementById("editFestivalPrice");
-  const capacity = this.getElementById("editFestivalCapacity");
+  const dropdown = this.getElementById("oName");
 
   dropdown.addEventListener("change", function () {
     const id = dropdown.value;
-    const festival = getFestival(id);
-    type.value = festival.tip;
-    drive.value = festival.prevoz;
-    price.value = festival.cena;
-    capacity.value = festival.maxOsoba;
+    dropDownMenuDeleteFestival(id);
   });
 });
+
+function validateEditOrganizerForm() {
+  editOrganizerFormMessage("", "success");
+  let addressInput = document.getElementById("updateOrganizerAdress");
+  let address = addressInput.value;
+
+  let yearInput = document.getElementById("updateOrganizerYear");
+  let year = yearInput.value;
+
+  let phoneInput = document.getElementById("updateOrganizerPhone");
+  let phone = phoneInput.value;
+
+  let emailInput = document.getElementById("updateOrganizerEmail");
+  let email = emailInput.value;
+
+  if (!/^[a-zA-ZčćšđžČĆŠĐŽ\s\d.,]+$/.test(address)) {
+    editOrganizerFormMessage(
+      "Adresa može sadržati samo slova, brojeve, zareze, tačke, i razmake",
+      "error"
+    );
+    return false;
+  }
+
+  if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email.trim())) {
+    editOrganizerFormMessage("Molimo unesite validnu email adresu", "error");
+    return false;
+  }
+
+  if (phone.trim().length == 0) {
+    editOrganizerFormMessage("Molimo unesite kontakt telefon", "error");
+    return false;
+  }
+
+  if (!/^\d{4}$/.test(year.trim())) {
+    editOrganizerFormMessage("Godina mora da sadrži 4 broja", "error");
+    return false;
+  }
+  return true;
+}
+
+function editOrganizerFormMessage(message, type) {
+  let messageElement = document.getElementById("editOrganizerFormMessage");
+  messageElement.textContent = message;
+  messageElement.className = type;
+}
+
+function validateAddFestivalForm() {
+  addFestivalFormMessage("", "success");
+  let nameInput = document.getElementById("addFestivalName");
+  let name = nameInput.value;
+
+  let typeInput = document.getElementById("addFestivalType");
+  let type = typeInput.value;
+
+  let driveInput = document.getElementById("addFestivalDrive");
+  let drive = driveInput.value;
+
+  let priceInput = document.getElementById("addFestivalPrice");
+  let price = priceInput.value;
+
+  let capacityInput = document.getElementById("addFestivalCapacity");
+  let capacity = capacityInput.value;
+
+  if (!/^[\p{L}\s]+$/u.test(name.trim())) {
+    addFestivalFormMessage("Molimo unesite samo slova za naziv", "error");
+    return false;
+  }
+
+  if (!/^[\p{L}\s]+$/u.test(type.trim())) {
+    addFestivalFormMessage(
+      "Molimo unesite samo slova za tip festivala",
+      "error"
+    );
+    return false;
+  }
+
+  if (!/^[\p{L}\s]+$/u.test(drive.trim())) {
+    addFestivalFormMessage(
+      "Molimo unesite samo slova za oblik prevoza",
+      "error"
+    );
+    return false;
+  }
+
+  if (price.trim() < 0 || price.trim() == "") {
+    addFestivalFormMessage("Molimo unesite validnu cenu", "error");
+    return false;
+  }
+
+  if (capacity.trim() < 0 || capacity.trim() == "") {
+    addFestivalFormMessage("Molimo unesite validan broj posetilaca", "error");
+    return false;
+  }
+
+  return true;
+}
